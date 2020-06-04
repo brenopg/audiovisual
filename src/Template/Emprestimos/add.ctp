@@ -50,15 +50,19 @@
 
     <?php
 
-    echo $this->Form->control('periodoEmail', array('label' => 'Período ao enviar Emails', 'placeholder' => 'Informe o período em dias'));
+    //echo $this->Form->control('periodoEmail', array('label' => 'Período ao enviar Emails', 'placeholder' => 'Informe o período em dias'));
+
+    echo $this->Form->input('emailFlag', array('label' => 'Enviar Email ao Solicitante', 'type' => 'checkbox', 'checked'));     
 
     echo $this->Form->control('mensagemEmail', array('type' => 'textarea', 'label' => 'Incluir Mensagem no Email (Opcional)'));
     ?>
 
 
+
+
 <!-- Trigger the modal with a button -->
 
- <!--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Mais Acessórios</button> 
+<!--  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Logar</button>  -->
 
 <!-- Modal -->
  <div id="myModal" class="modal fade" role="dialog">
@@ -68,18 +72,22 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Acessórios Adicionais</h4>
+        <h4 class="modal-title">Login do Solicitante</h4>
       </div>
       <div class="modal-body">
 
-        <?php
+        
 
-            //echo $this->Form->input('acessorios._ids', array('label' => false, 'div' => false,'type' => 'select','multiple'=>'checkbox','legend' => 'false'));
-        ?>
+           <?= $this->Form->create() ?>
+
+    <?= $this->Form->input('email', array('class' => 'input', 'placeholder' => 'E-mail', 'label' => '')) ?>
+
+    <?= $this->Form->input('password', array('class' => 'input', 'placeholder' => 'Senha', 'type' => 'password', 'label' => '')) ?>
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Concluir</button>
+     <?= $this->Form->button('Login', array('class' => 'submit')) ?>
+        <?= $this->Form->end() ?>
       </div>
     </div>
 
@@ -95,35 +103,5 @@
 
 </div>
 
-<script type="text/javascript">
 
-     function pegarValores(){
-        var valor = $('#equipamento-id').val();  
-        var ValorA = document.getElementById("equipamento-id").value;    
-        //alert(ValorA);
-
-         var data = $('#data_json').val();
-
-        var var2= "<?phpecho"+"$this->Form->input('acessorios._ids', array('label' => false, 'div' => false,'type' => 'select','multiple'=>'checkbox','legend' => 'false'))"+";?>";
-
-        
-
-        var var3 = "<input type='checkbox' name='vehicle' value="+valor+">"+ teste +" ";
-
-        var var4 = valor;
-
-        $.ajax({
-      type: "POST",
-      data: {valor: 'valor'} ,
-      url: "add.ctp",
-      success: function(resposta){
-          alert(resposta);
-      }  
-    }); 
-
-        $('.selectAcess').empty();
-        $('.selectAcess').prepend(valor);
- }
-
- </script>
 

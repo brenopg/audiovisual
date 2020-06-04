@@ -16,6 +16,8 @@
             $dataDevolucao = date('Y-m-d H:i');
             echo $this->Form->control('dataDevolucao', array('type' => 'hidden', 'value'=> $dataDevolucao));
 
+            echo $this->Form->input('emailFlag', array('label' => 'Enviar Email ao Solicitante', 'type' => 'checkbox', 'checked'));     
+
             ?>
 
     </fieldset>

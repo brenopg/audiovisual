@@ -124,8 +124,11 @@ return false;
             $emprestimo = $this->Emprestimos->patchEntity($emprestimo, $this->request->getData());
             if ($this->Emprestimos->save($emprestimo)) {
 
-           //Envia email ao solicitante
+           $valorCheckbox = $_POST['emailFlag'];
+            if($valorCheckbox == 1){  //1 = marcado   // 0 = desmarcado
+                //Envia email ao solicitante
             $this->getMailer('Emprestimo')->send('receber', [$emprestimo, $solicitante, $equipamento]);
+            }
 
                 $this->Flash->success(__('Empréstimo finalizado com sucesso.'));
 
@@ -153,9 +156,12 @@ return false;
             //Busca o equipamento pelo ID
             $equip = $this->Emprestimos->Equipamentos->findById($emprestimo->equipamento_id);
             $equipamento = $equip->first();
-            
-            //Envia email ao solicitante
-            $this->getMailer('Emprestimo')->send('emprestar', [$emprestimo, $solicitante, $equipamento]);
+
+             $valorCheckbox = $_POST['emailFlag'];
+            if($valorCheckbox == 1){  //1 = marcado   // 0 = desmarcado
+                //Envia email ao solicitante
+                $this->getMailer('Emprestimo')->send('emprestar', [$emprestimo, $solicitante, $equipamento]);
+                 }
                
                 $this->Flash->success(__('Empréstimo salvo com sucesso.'));
 

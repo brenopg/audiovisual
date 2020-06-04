@@ -27,7 +27,6 @@ class UsuariosController extends AppController
 
      public function login()
     {
-        //$this->layout = 'login';
         $this->viewBuilder()->setLayout('login');
          if ($this->request->is('post')) {
         $usuario = $this->Auth->identify();
@@ -44,7 +43,7 @@ class UsuariosController extends AppController
 
     public function logout()
 {
-    //$this->Flash->success('You are now logged out.');
+    $this->Flash->success('Você está desconectado agora.');
     return $this->redirect($this->Auth->logout());
 }
     /**
